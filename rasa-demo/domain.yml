@@ -8,6 +8,22 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - who_creator
+  - get_username
+  - get_action
+
+entities:
+  - PERSON
+
+slots:
+  PERSON:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: PERSON
+
+actions:
+  - action_hello_world
 
 responses:
   utter_greet:
@@ -28,6 +44,16 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_creator:
+  - text: "My owner is a Data Scientist of Manifold AI learning"
+  - text: "I am created by a Data Scientist of Manifold AI learning"
+  - text: "I am student of Manifold AI learning"
+ 
+  utter_welcome:
+  - text: Welcome dear {PERSON}
+  - text: Thats a vary nice name {PERSON}, nice to meet you 
+  - text: WoW!!! good to know you {PERSON}
 
 session_config:
   session_expiration_time: 60

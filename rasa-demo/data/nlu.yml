@@ -89,3 +89,27 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+ 
+- intent: who_creator
+  examples: |
+    - Who is your creator?
+    - Who owns you ? 
+    - Who are your parents ? 
+    - Who is your creator?
+    - Creator ?
+    - Owner ? 
+
+- intent: get_username
+  examples: |
+    - My name is [Kakhi](PERSON)
+    - My name is [Gio](PERSON)
+    - My name is [Zura](PERSON) 
+    - My name is [Tengo](PERSON)
+    - I'm [Makho](PERSON)?
+    - I'm [Vaja](PERSON)?
+
+- intent: get_action 
+  examples: |
+    - run test action
+    - example action
+    - run the test
