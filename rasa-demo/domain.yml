@@ -11,9 +11,12 @@ intents:
   - who_creator
   - get_username
   - get_action
+  - get_news
+
 
 entities:
   - PERSON
+  - news_category
 
 slots:
   PERSON:
@@ -22,8 +25,16 @@ slots:
     - type: from_entity
       entity: PERSON
 
+  news_category:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: news_category
+
+
 actions:
   - action_hello_world
+  - action_get_news
 
 responses:
   utter_greet:

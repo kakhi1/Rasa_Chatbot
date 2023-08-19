@@ -11,17 +11,35 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-
+import requests
+import json
+from dotenv import load_dotenv
+import os
+load_dotenv ('.env')
+api_key: str = os.getenv('API_KEY')
 
 class ActionHelloWorld(Action):
 
     def name(self) -> Text:
-        return "action_hello_world"
+        return "action_get_news"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        category = tracker.get_slot('news_category')
+        print(f"Identified news category is {category}")
+        url = 'https://api.nytimes.com/svc/news/v3/content/all/{category}.json'.format(category=category)
+        params = {'api-key': "API_KEY", 'limit':10}
+        response = requests.get(url,params).text
+        json_data = json.loads(response)["results"]
 
-        dispatcher.utter_message(text="Hello World!")
+        counter=0
+        for each_news in json_data:
+            counter += 1
+            output_msg = f"{str(counter)}.{each_news['title']} - under the section {each_news['section']} \
+            it was published on {each_news['published_date']}"  
+            dispatcher.utter_message(text=output_msg)
+                  
+    
 
         return []

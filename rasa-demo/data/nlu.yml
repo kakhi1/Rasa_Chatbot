@@ -113,3 +113,10 @@ nlu:
     - run test action
     - example action
     - run the test
+
+- intent: get_news
+  examples: |
+    - Share some news around the [world] (news_category)
+    - what is cooking in [sports] (news_category)
+    - who is winning in [sports] (news_category)
+    - who is profiting in [business] (news_category) 

@@ -43,4 +43,8 @@ stories:
   steps:
   - intent: get_action
   - action: action_hello_world
-  
+
+- story: get news from nytimes
+  steps:
+  - intent: get_news
+  - action: action_get_news
